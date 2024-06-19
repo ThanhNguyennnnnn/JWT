@@ -1,0 +1,6 @@
+// Thu vien dich code
+{
+    "presets": [
+        "@babel/preset-env"
+    ]
+}

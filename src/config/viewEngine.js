@@ -10,7 +10,7 @@ const configViewEngine = (app) => {
     // noi cho app biet minh su dung cong nghe ejs de viet html css
     app.set("view engine", "ejs");
     // day chinh la noi luu tru, viet ngoai file nay app se khong hieu va khong tim thay
-    app.set('views', "./src/views");
+    app.set('views', "./src/view");
 }
 
 export default configViewEngine;

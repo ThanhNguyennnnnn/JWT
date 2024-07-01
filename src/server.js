@@ -1,8 +1,9 @@
 // Viet code de chay server len
 import express from "express";
-import configViewEngine from "./configs/viewEngine";
+import configViewEngine from "./config/viewEngine";
 import initWebRoutes from "./routes/web";
 require("dotenv").config();
+import bodyParser from "body-parser";
 
 // Ung dung se chay vao file server.js dau tien
 // npm src/server.js duoc doi thanh npm start trong file package.json -> scripts -> start
@@ -15,6 +16,12 @@ const PORT = process.env.PORT || 8080;
 
 //config view engine
 configViewEngine(app);
+
+//config body parser
+// giup req tra ve chuyen sang dang json
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+
 // init web routes
 initWebRoutes(app);
 

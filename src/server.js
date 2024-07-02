@@ -4,6 +4,7 @@ import configViewEngine from "./config/viewEngine";
 import initWebRoutes from "./routes/web";
 require("dotenv").config();
 import bodyParser from "body-parser";
+// import connection from "./config/connectDB";
 
 // Ung dung se chay vao file server.js dau tien
 // npm src/server.js duoc doi thanh npm start trong file package.json -> scripts -> start
@@ -21,6 +22,9 @@ configViewEngine(app);
 // giup req tra ve chuyen sang dang json
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
+
+// test connection db
+// connection();
 
 // init web routes
 initWebRoutes(app);

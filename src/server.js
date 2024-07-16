@@ -2,6 +2,8 @@
 import express from "express";
 import configViewEngine from "./config/viewEngine";
 import initWebRoutes from "./routes/web";
+import initApiRoutes from "./routes/api";
+import configCors from './config/cors'
 require("dotenv").config();
 import bodyParser from "body-parser";
 // import connection from "./config/connectDB";
@@ -14,6 +16,9 @@ import bodyParser from "body-parser";
 const app = express();
 // process la cu phap de lay gia' tri cac bien trong file dotenv
 const PORT = process.env.PORT || 8080;
+
+//config cors
+configCors(app);
 
 //config view engine
 configViewEngine(app);
@@ -28,6 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // init web routes
 initWebRoutes(app);
+initApiRoutes(app);
 
 app.listen(PORT, () => {
     console.log('JWT BackEnd is running on the port =', PORT);

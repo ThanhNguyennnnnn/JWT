@@ -1,11 +1,12 @@
 // Viet code de chay server len
+require("dotenv").config();
 import express from "express";
 import configViewEngine from "./config/viewEngine";
 import initWebRoutes from "./routes/web";
 import initApiRoutes from "./routes/api";
 import configCors from './config/cors'
-require("dotenv").config();
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 // import connection from "./config/connectDB";
 
 // Ung dung se chay vao file server.js dau tien
@@ -26,7 +27,10 @@ configViewEngine(app);
 //config body parser
 // giup req tra ve chuyen sang dang json
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// config cookie parser
+app.use(cookieParser())
 
 // test connection db
 // connection();
@@ -34,6 +38,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // init web routes
 initWebRoutes(app);
 initApiRoutes(app);
+
+// req => middleware => res
+app.use((req, res) => {
+    return res.send('404 not found')
+})
 
 app.listen(PORT, () => {
     console.log('JWT BackEnd is running on the port =', PORT);

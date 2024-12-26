@@ -38,6 +38,8 @@ const initApiRoutes = (app) => {
 
     // group router
     router.get('/group/read', groupController.readFunc);
+    
+    router.get('/ques/read', groupController.readQues);
 
     // ung dung duoc bat dau voi dau '/'
     return app.use("/api/v1/", router)
